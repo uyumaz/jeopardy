@@ -4,17 +4,22 @@ import { useState } from 'react';
 
 type Props = {
   title: string;
+  defaultTeams?: string[];
   onStart: (teams: { name: string }[]) => void;
 };
 
 const MIN_TEAMS = 2;
 const MAX_TEAMS = 10;
 
-export function Setup({ title, onStart }: Props) {
-  const [count, setCount] = useState(3);
-  const [names, setNames] = useState<string[]>(() =>
-    Array.from({ length: MAX_TEAMS }, (_, i) => `Team ${i + 1}`),
+export function Setup({ title, defaultTeams, onStart }: Props) {
+  const [count, setCount] = useState(() =>
+    defaultTeams && defaultTeams.length >= MIN_TEAMS ? defaultTeams.length : 3,
   );
+  const [names, setNames] = useState<string[]>(() => {
+    const fallback = Array.from({ length: MAX_TEAMS }, (_, i) => `Team ${i + 1}`);
+    if (!defaultTeams) return fallback;
+    return fallback.map((f, i) => defaultTeams[i] ?? f);
+  });
 
   const active = names.slice(0, count);
   const canStart = active.every((n) => n.trim().length > 0);

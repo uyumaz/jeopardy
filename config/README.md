@@ -8,6 +8,10 @@ request — edit it and reload the browser to see changes (no rebuild needed).
 
 ```yaml
 title: "My Game Title"          # shown on setup + winner screens
+teams:                          # optional; 2–10 names to pre-fill the setup screen
+  - "Red"
+  - "Blue"
+  - "Green"
 categories:                     # list of categories (columns on the board)
   - name: "HISTORY"             # UPPERCASE display name
     clues:                      # list of clues (rows within the column)
@@ -21,7 +25,9 @@ categories:                     # list of categories (columns on the board)
 
 ## Rules
 
-- **Teams:** 2–10 teams, configured on the setup screen (not in YAML).
+- **Teams:** 2–10 teams. Optional `teams` list pre-fills the setup screen; if
+  omitted, the host enters names manually. Either way the host can edit
+  names and change the count before starting.
 - **One round only.** No Double Jeopardy, Final Jeopardy, or Daily Doubles.
 - **All categories must have the same number of clues.** (Typical: 5.)
 - **Values within a category must be strictly ascending** (e.g., 100, 200, 300,

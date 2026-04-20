@@ -67,6 +67,7 @@ function Game({ config }: { config: GameConfig }) {
     return (
       <Setup
         title={config.title}
+        defaultTeams={config.teams}
         onStart={(teams) => dispatch({ type: 'start', teams })}
       />
     );

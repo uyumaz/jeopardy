@@ -1,4 +1,8 @@
 title: "Team Offsite Jeopardy"
+teams:
+  - "Red Team"
+  - "Blue Team"
+  - "Green Team"
 categories:
   - name: "HISTORY"
     clues:

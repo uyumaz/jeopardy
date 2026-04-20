@@ -18,6 +18,7 @@ export const zGameConfig = z
   .object({
     title: nonBlank('title'),
     categories: z.array(zCategory).min(1),
+    teams: z.array(nonBlank('team')).min(2).max(10).optional(),
   })
   .superRefine((cfg, ctx) => {
     const counts = cfg.categories.map((c) => c.clues.length);
