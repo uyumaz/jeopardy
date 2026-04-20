@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import type { GameConfig } from '@/lib/config-schema';
 import type { Team } from '@/lib/game-state';
 import { Tile } from './Tile';
@@ -9,14 +10,16 @@ type Props = {
   used: boolean[][];
   teams: Team[];
   onPick: (cat: number, clue: number) => void;
+  onReset: () => void;
 };
 
-export function Board({ config, used, teams, onPick }: Props) {
+export function Board({ config, used, teams, onPick, onReset }: Props) {
   const clueCount = config.categories[0]?.clues.length ?? 0;
   const catCount = config.categories.length;
 
   return (
-    <main className="h-screen flex flex-col p-4 md:p-6 gap-4 overflow-hidden">
+    <main className="h-screen flex flex-col p-4 md:p-6 gap-4 overflow-hidden relative">
+      <ResetButton onConfirm={onReset} />
       <div
         className="grid gap-1 flex-1"
         style={{
@@ -49,6 +52,30 @@ export function Board({ config, used, teams, onPick }: Props) {
 
       <Scoreboard teams={teams} />
     </main>
+  );
+}
+
+function ResetButton({ onConfirm }: { onConfirm: () => void }) {
+  const [armed, setArmed] = useState(false);
+  useEffect(() => {
+    if (!armed) return;
+    const t = setTimeout(() => setArmed(false), 3000);
+    return () => clearTimeout(t);
+  }, [armed]);
+
+  return (
+    <button
+      type="button"
+      onClick={() => (armed ? onConfirm() : setArmed(true))}
+      className={`absolute top-2 right-2 z-10 text-xs uppercase tracking-wider px-2 py-1 rounded border transition ${
+        armed
+          ? 'bg-red-600 border-red-400 text-white'
+          : 'border-white/20 text-white/50 hover:text-white hover:border-white/50'
+      }`}
+      title={armed ? 'Click again to confirm' : 'Reset game'}
+    >
+      {armed ? 'Click to confirm' : 'Reset'}
+    </button>
   );
 }
 

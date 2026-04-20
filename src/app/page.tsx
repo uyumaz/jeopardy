@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useMemo, useReducer, useState } from 'react';
 import type { GameConfig } from '@/lib/config-schema';
 import { initialState, reducer } from '@/lib/game-state';
+import { configKeyOf, loadState, saveState } from '@/lib/persistence';
 import { Setup } from '@/components/Setup';
 import { Board } from '@/components/Board';
 import { ClueView } from '@/components/ClueView';
@@ -61,7 +62,17 @@ export default function Page() {
 }
 
 function Game({ config }: { config: GameConfig }) {
-  const [state, dispatch] = useReducer(reducer, config, initialState);
+  const configKey = useMemo(() => configKeyOf(config), [config]);
+  const [state, dispatch] = useReducer(reducer, config, (c) => {
+    const restored = loadState(configKey);
+    return restored ?? initialState(c);
+  });
+
+  useEffect(() => {
+    saveState(state, configKey);
+  }, [state, configKey]);
+
+  const onReset = () => dispatch({ type: 'newGame' });
 
   if (state.phase === 'setup') {
     return (
@@ -74,9 +85,7 @@ function Game({ config }: { config: GameConfig }) {
   }
 
   if (state.phase === 'winner') {
-    return (
-      <Winner teams={state.teams} onNewGame={() => dispatch({ type: 'newGame' })} />
-    );
+    return <Winner teams={state.teams} onNewGame={onReset} />;
   }
 
   return (
@@ -86,6 +95,7 @@ function Game({ config }: { config: GameConfig }) {
         used={state.used}
         teams={state.teams}
         onPick={(cat, clue) => dispatch({ type: 'pickTile', cat, clue })}
+        onReset={onReset}
       />
       {state.phase === 'clue' && state.current && (
         <ClueView
