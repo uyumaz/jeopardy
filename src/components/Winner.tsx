@@ -38,7 +38,7 @@ export function Winner({ teams, onNewGame }: Props) {
                   winner ? 'text-black' : t.score < 0 ? 'text-red-400' : 'text-jeopardy-gold-bright'
                 }`}
               >
-                ${t.score}
+                €{t.score}
               </span>
             </li>
           );

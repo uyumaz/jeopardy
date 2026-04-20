@@ -50,7 +50,7 @@ export function ClueView({
             {category.name}
           </p>
           <p className="text-3xl md:text-5xl font-black text-jeopardy-gold-bright jeopardy-shadow">
-            ${clue.value}
+            €{clue.value}
           </p>
         </div>
         <button
@@ -101,7 +101,7 @@ export function ClueView({
               }`}
             >
               <span className="text-center text-sm md:text-base uppercase tracking-wider truncate">
-                {t.name} · ${t.score}
+                {t.name} · €{t.score}
               </span>
               <div className="grid grid-cols-2 gap-1">
                 <button
