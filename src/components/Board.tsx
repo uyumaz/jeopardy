@@ -16,7 +16,7 @@ export function Board({ config, used, teams, onPick }: Props) {
   const catCount = config.categories.length;
 
   return (
-    <main className="min-h-screen flex flex-col p-4 md:p-6 gap-4">
+    <main className="h-screen flex flex-col p-4 md:p-6 gap-4 overflow-hidden">
       <div
         className="grid gap-1 flex-1"
         style={{

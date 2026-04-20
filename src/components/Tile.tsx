@@ -9,16 +9,16 @@ type Props = {
 export function Tile({ value, used, onClick }: Props) {
   if (used) {
     return (
-      <div className="aspect-[4/3] bg-jeopardy-blue-dark border border-black/40 rounded-sm" />
+      <div className="bg-jeopardy-blue-dark border border-black/40 rounded-sm min-h-0" />
     );
   }
   return (
     <button
       type="button"
       onClick={onClick}
-      className="aspect-[4/3] bg-jeopardy-blue border border-black/40 rounded-sm flex items-center justify-center hover:brightness-125 active:brightness-90 transition"
+      className="bg-jeopardy-blue border border-black/40 rounded-sm flex items-center justify-center hover:brightness-125 active:brightness-90 transition min-h-0"
     >
-      <span className="text-3xl md:text-5xl font-black text-jeopardy-gold-bright jeopardy-shadow">
+      <span className="text-[min(5vw,5vh)] font-black text-jeopardy-gold-bright jeopardy-shadow">
         €{value}
       </span>
     </button>
