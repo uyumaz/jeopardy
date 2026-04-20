@@ -26,7 +26,16 @@ export type Action =
   | { type: 'judgeWrong'; teamId: string }
   | { type: 'closeClue' }
   | { type: 'toggleAnswer' }
-  | { type: 'newGame' };
+  | { type: 'newGame' }
+  | { type: 'restore'; state: GameState };
+
+export const UNDOABLE_ACTIONS = [
+  'pickTile',
+  'judgeCorrect',
+  'judgeWrong',
+  'closeClue',
+  'toggleAnswer',
+] as const satisfies readonly Action['type'][];
 
 export function initialState(config: GameConfig): GameState {
   const used = config.categories.map((cat) => cat.clues.map(() => false));
@@ -141,6 +150,10 @@ export function reducer(state: GameState, action: Action): GameState {
 
     case 'newGame': {
       return initialState(state.config);
+    }
+
+    case 'restore': {
+      return action.state;
     }
 
     default:

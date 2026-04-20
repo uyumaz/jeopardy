@@ -12,6 +12,7 @@ type Props = {
   onWrong: (teamId: string) => void;
   onClose: () => void;
   onToggleAnswer: () => void;
+  onUndo?: () => void;
 };
 
 export function ClueView({
@@ -22,6 +23,7 @@ export function ClueView({
   onWrong,
   onClose,
   onToggleAnswer,
+  onUndo,
 }: Props) {
   const category = config.categories[current.cat];
   const clue = category.clues[current.clue];
@@ -53,14 +55,26 @@ export function ClueView({
             €{clue.value}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="text-white/70 hover:text-white uppercase tracking-wider text-sm md:text-base border border-white/30 px-3 py-1 rounded"
-          title="No one got it — close clue (Esc)"
-        >
-          No one · Esc
-        </button>
+        <div className="flex items-center gap-2">
+          {onUndo && (
+            <button
+              type="button"
+              onClick={onUndo}
+              className="text-jeopardy-gold-bright uppercase tracking-wider text-sm md:text-base border border-jeopardy-gold/60 hover:border-jeopardy-gold-bright hover:bg-jeopardy-blue-dark px-3 py-1 rounded"
+              title="Undo last action"
+            >
+              ↶ Undo
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-white/70 hover:text-white uppercase tracking-wider text-sm md:text-base border border-white/30 px-3 py-1 rounded"
+            title="No one got it — close clue (Esc)"
+          >
+            No one · Esc
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-6 md:gap-10 text-center overflow-y-auto py-4">

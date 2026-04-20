@@ -5,9 +5,10 @@ import type { Team } from '@/lib/game-state';
 type Props = {
   teams: Team[];
   onNewGame: () => void;
+  onUndo?: () => void;
 };
 
-export function Winner({ teams, onNewGame }: Props) {
+export function Winner({ teams, onNewGame, onUndo }: Props) {
   const sorted = [...teams].sort((a, b) => b.score - a.score);
   const topScore = sorted[0]?.score;
   const hasWinner = sorted.length > 0 && topScore! > 0;
@@ -45,13 +46,24 @@ export function Winner({ teams, onNewGame }: Props) {
         })}
       </ol>
 
-      <button
-        type="button"
-        onClick={onNewGame}
-        className="bg-jeopardy-gold-bright text-black text-2xl font-black uppercase tracking-widest px-10 py-4 rounded hover:brightness-110 jeopardy-shadow"
-      >
-        New Game
-      </button>
+      <div className="flex items-center gap-4">
+        {onUndo && (
+          <button
+            type="button"
+            onClick={onUndo}
+            className="border-2 border-jeopardy-gold/60 text-jeopardy-gold-bright text-xl font-black uppercase tracking-widest px-8 py-4 rounded hover:border-jeopardy-gold-bright hover:bg-jeopardy-blue transition"
+          >
+            ↶ Undo
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={onNewGame}
+          className="bg-jeopardy-gold-bright text-black text-2xl font-black uppercase tracking-widest px-10 py-4 rounded hover:brightness-110 jeopardy-shadow"
+        >
+          New Game
+        </button>
+      </div>
     </main>
   );
 }

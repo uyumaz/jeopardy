@@ -11,15 +11,28 @@ type Props = {
   teams: Team[];
   onPick: (cat: number, clue: number) => void;
   onReset: () => void;
+  onUndo?: () => void;
 };
 
-export function Board({ config, used, teams, onPick, onReset }: Props) {
+export function Board({ config, used, teams, onPick, onReset, onUndo }: Props) {
   const clueCount = config.categories[0]?.clues.length ?? 0;
   const catCount = config.categories.length;
 
   return (
     <main className="h-screen flex flex-col p-4 md:p-6 gap-4 overflow-hidden relative">
-      <ResetButton onConfirm={onReset} />
+      <div className="absolute top-2 right-2 z-10 flex items-center gap-2">
+        {onUndo && (
+          <button
+            type="button"
+            onClick={onUndo}
+            className="text-xs uppercase tracking-wider px-2 py-1 rounded border border-jeopardy-gold/50 text-jeopardy-gold-bright hover:border-jeopardy-gold-bright hover:bg-jeopardy-blue transition"
+            title="Undo last action"
+          >
+            ↶ Undo
+          </button>
+        )}
+        <ResetButton onConfirm={onReset} />
+      </div>
       <div
         className="grid gap-1 flex-1"
         style={{
@@ -67,7 +80,7 @@ function ResetButton({ onConfirm }: { onConfirm: () => void }) {
     <button
       type="button"
       onClick={() => (armed ? onConfirm() : setArmed(true))}
-      className={`absolute top-2 right-2 z-10 text-xs uppercase tracking-wider px-2 py-1 rounded border transition ${
+      className={`text-xs uppercase tracking-wider px-2 py-1 rounded border transition ${
         armed
           ? 'bg-red-600 border-red-400 text-white'
           : 'border-white/20 text-white/50 hover:text-white hover:border-white/50'
