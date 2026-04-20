@@ -1,0 +1,104 @@
+title: "Team Offsite Jeopardy"
+categories:
+  - name: "HISTORY"
+    clues:
+      - value: 100
+        clue: "Year the Berlin Wall fell"
+        answer: "1989"
+      - value: 200
+        clue: "Ancient wonder of the world located in Giza"
+        answer: "The Great Pyramid"
+      - value: 300
+        clue: "First president of the United States"
+        answer: "George Washington"
+      - value: 400
+        clue: "Country that gifted the Statue of Liberty to the U.S."
+        answer: "France"
+      - value: 500
+        clue: "Year World War II ended"
+        answer: "1945"
+  - name: "SCIENCE"
+    clues:
+      - value: 100
+        clue: "Chemical symbol for gold"
+        answer: "Au"
+      - value: 200
+        clue: "Planet known as the Red Planet"
+        answer: "Mars"
+      - value: 300
+        clue: "Gas that plants absorb from the atmosphere"
+        answer: "Carbon dioxide"
+      - value: 400
+        clue: "Scientist who proposed the theory of general relativity"
+        answer: "Albert Einstein"
+      - value: 500
+        clue: "Hardest naturally occurring substance on Earth"
+        answer: "Diamond"
+  - name: "MOVIES"
+    clues:
+      - value: 100
+        clue: "Director of Jurassic Park and E.T."
+        answer: "Steven Spielberg"
+      - value: 200
+        clue: "Film featuring the line 'Here's looking at you, kid'"
+        answer: "Casablanca"
+      - value: 300
+        clue: "Actor who played Forrest Gump"
+        answer: "Tom Hanks"
+      - value: 400
+        clue: "Highest-grossing film of the 1990s, set aboard a doomed ship"
+        answer: "Titanic"
+      - value: 500
+        clue: "Year the original Star Wars was released in theaters"
+        answer: "1977"
+  - name: "GEOGRAPHY"
+    clues:
+      - value: 100
+        clue: "Longest river in the world"
+        answer: "The Nile"
+      - value: 200
+        clue: "Capital of Australia"
+        answer: "Canberra"
+      - value: 300
+        clue: "Country that has the most time zones"
+        answer: "France"
+      - value: 400
+        clue: "Mountain range that separates Europe from Asia"
+        answer: "The Urals"
+      - value: 500
+        clue: "Smallest country in the world by area"
+        answer: "Vatican City"
+  - name: "SPORTS"
+    clues:
+      - value: 100
+        clue: "Number of players on a soccer team on the field"
+        answer: "Eleven"
+      - value: 200
+        clue: "Sport associated with Wimbledon"
+        answer: "Tennis"
+      - value: 300
+        clue: "Country that has won the most FIFA World Cups"
+        answer: "Brazil"
+      - value: 400
+        clue: "Olympic sport that combines swimming, cycling, and running"
+        answer: "Triathlon"
+      - value: 500
+        clue: "Length of an Olympic marathon, in kilometers"
+        answer: "42.195"
+  - name: "TECH"
+    clues:
+      - value: 100
+        clue: "Company founded by Steve Jobs and Steve Wozniak"
+        answer: "Apple"
+      - value: 200
+        clue: "Protocol that powers the World Wide Web"
+        answer: "HTTP"
+      - value: 300
+        clue: "Programming language named after a British comedy troupe"
+        answer: "Python"
+      - value: 400
+        clue: "Year the first iPhone was released"
+        answer: "2007"
+      - value: 500
+        clue: "Person often called the father of modern computing, known for work at Bletchley Park"
+        answer: "Alan Turing"

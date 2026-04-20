@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-jeopardy-blue-dark text-white;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.jeopardy-shadow {
+  text-shadow: 0 2px 0 #000;
+}
