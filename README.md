@@ -7,9 +7,13 @@ A projected, host-driven Jeopardy-style trivia game for team events. One round,
 
 ```bash
 npm install
+cp config/game.yaml.example config/game.yaml   # first time only
 # edit config/game.yaml to customize categories, clues, and answers
 npm run dev
 ```
+
+Your local `config/game.yaml` is gitignored so each machine can hold its own
+questions without conflicts.
 
 Then open <http://localhost:3000> and press **F11** to go fullscreen for
 projection.
@@ -23,7 +27,9 @@ adds or subtracts the clue's value from that team's score accordingly. A clue
 can be marked wrong for multiple teams before another gets it right, or closed
 with **No one** if no team answers correctly.
 
-State lives in memory in the browser — reloading the page resets the game.
+State is persisted in `localStorage` so an accidental reload doesn't wipe
+scores. The top-right **Reset** button clears the game (takes two clicks to
+confirm), and the **Undo** button reverses the last action.
 
 ## Customizing the game
 

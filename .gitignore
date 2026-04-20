@@ -17,3 +17,6 @@ next-env.d.ts
 # local tooling
 .claude
 _bmad
+
+# local game config (copy from config/game.yaml.example)
+/config/game.yaml

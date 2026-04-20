@@ -4,6 +4,16 @@
 `config/game.yaml` in the project root and is read by the server on each
 request — edit it and reload the browser to see changes (no rebuild needed).
 
+**Not committed.** `config/game.yaml` is gitignored so each machine can hold
+its own questions without conflicts. Copy the template to get started:
+
+```
+cp config/game.yaml.example config/game.yaml
+```
+
+The committed template `config/game.yaml.example` serves as the canonical
+shape — keep it up to date if the schema changes.
+
 ## Schema
 
 ```yaml
